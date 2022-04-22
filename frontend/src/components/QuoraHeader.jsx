@@ -31,7 +31,7 @@ const QuoraHeader = () => {
         questionUrl: inputUrl,
       };
       await axios
-        .post("http:localhost:80/api/questions", body, config)
+        .post("/api/questions", body, config)
         .then((res) => {
           console.log(res.data);
           alert(res.data.message);

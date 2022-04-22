@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Avatar from "@mui/material/Avatar";
-import "./css/post.css";
+import "./css/Post.css";
 import ArrowDownwardOutlinedIcon from "@mui/icons-material/ArrowDownwardOutlined";
 import ArrowUpwardOutlinedIcon from "@mui/icons-material/ArrowUpwardOutlined";
 import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
