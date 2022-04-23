@@ -10,7 +10,17 @@ import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
 import Modal from "react-responsive-modal";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-const Post = () => {
+import ReactTimeAgo from "react-time-ago";
+
+function LastSeen({ date }) {
+  return (
+    <div>
+      <ReactTimeAgo date={date} locale="en-US" timeStyle="round" />
+    </div>
+  );
+}
+
+const Post = ({ post }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [answer, setAnswer] = useState("");
 
@@ -19,11 +29,13 @@ const Post = () => {
       <div className="post__info">
         <Avatar />
         <h4>gmail.com</h4>
-        <small>time</small>
+        <small>
+          <LastSeen date={post?.createdAt} />
+        </small>
       </div>
       <div className="post__body">
         <div className="post__question">
-          <p>summaryofthe question</p>
+          <p>{post?.questionName}</p>
           <button
             onClick={() => setIsModalOpen(true)}
             className="post__btnAnswer"
@@ -43,7 +55,7 @@ const Post = () => {
             }}
           >
             <div className="modal__question">
-              <h1>question headline</h1>
+              <h1>{post?.questionName}</h1>
               <p>
                 asked by <span className="name">usernamegmail.com</span> on{" "}
                 <span className="name">{new Date().toLocaleString()}</span>
@@ -83,7 +95,7 @@ const Post = () => {
             margin: "10px 0",
           }}
         >
-          1 anser
+          {post?.allAnswers.length}
         </p>
         <div
           style={{
